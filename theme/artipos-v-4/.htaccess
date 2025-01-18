@@ -1,0 +1,126 @@
+ # Yönlendirmeleri aktif eder
+
+RewriteEngine on
+#AllowOverride Options
+#php_value session.gc_maxlifetime 36000
+#php_value session.cache_expire 36000    
+  
+<IfModule mod_php7.c>
+    #Session timeout
+    php_value session.cookie_lifetime 3600000
+    php_value session.gc_maxlifetime 3600000
+</IfModule>
+
+#RewriteCond %{SERVER_PORT} 80 
+
+#Seo url oluşturma
+
+RewriteCond %{REQUEST_FILENAME} !-d
+
+RewriteCond %{REQUEST_FILENAME}\.php -f
+
+RewriteRule ^(.*)$ $1.php 
+
+
+RewriteRule ^garson-cagir/? garson-cagir.php [NC,L]
+
+RewriteRule ^anasayfa/? index.php [NC,L]
+
+ RewriteRule ^category/? search-kategori.php [NC,L]
+
+
+RewriteRule ^uyelik-sozlesmesi/? uyelik-sozlesmesi.php [NC,L]
+
+
+
+RewriteRule ^cikis-yap/? islemler/logout.php [NC,L]
+
+RewriteRule ^satis-sozlesmesi/? satis-sozlesmesi.php [NC,L]
+
+
+
+RewriteRule ^teslimat-kosullari/? teslimat-kosullari.php [NC,L]
+
+
+
+RewriteRule ^adres-bilgileri/?  adres-bilgileri.php  [NC,L]
+
+
+
+RewriteRule ^iade-kosullari/? iade-kosullari.php [NC,L]
+
+  
+
+RewriteRule ^gizlilik-guvenlik/? gizlilik-guvenlik.php [NC,L]
+
+
+
+RewriteRule ^odeme/? odeme.php [NC,L]
+
+RewriteRule ^xml/? xml.php [NC,L]
+
+
+RewriteRule ^iletisim/? iletisim.php [NC,L]
+
+
+
+RewriteRule ^sepetim/? sepetim.php [NC,L]
+
+
+
+RewriteRule ^hakkimizda/? hakkimizda.php [NC,L]
+
+
+
+RewriteRule ^hesabim/? hesabim.php [NC,L]
+
+RewriteRule ^siparisler/? siparisler.php [NC,L]
+
+
+
+RewriteRule ^giris-yap/? giris-yap.php [NC,L]
+
+RewriteRule ^uye-ol/? uye-ol.php [NC,L]
+
+
+RewriteRule ^siparis-gecmisi/? siparis-gecmisi.php [NC,L]
+
+
+
+RewriteRule ^kargo-takibi/? kargo-takibi.php [NC,L]
+
+
+
+RewriteRule ^sifremi-yenile/? sifremi-yenile.php [NC,L]
+
+
+ 
+
+# Ürün Yönlendirmesi
+
+ RewriteRule ^([0-9a-zA-Z-_]+)-([0-9]+)/$ urun-detay.php?i=$1&id=$2 [L,QSA]
+
+ RewriteRule ^([0-9a-zA-Z-_]+)-([0-9]+)$ urun-detay.php?i=$1&id=$2 [L,QSA]
+  
+  # RewriteRule ^([0-9a-zA-Z-_]+)-([0-9]+)/$ urunler.php?l=$1&id=$2/ [L,QSA]
+
+ 
+
+# Kategori Yönlendirmesi
+
+RewriteRule  ^kategoriler-([0-9a-zA-Z-_]+)$ kategoriler.php?i=$1/ [L,QSA]
+
+
+RewriteRule  ^kategoriler-([0-9a-zA-Z-_]+)/$ kategoriler.php?i=$1/ [L,QSA]
+
+RewriteRule  ^alt-kategoriler-([0-9a-zA-Z-_]+)/$ alt-kategoriler.php?i=$1/ [L,QSA]
+
+RewriteRule  ^koleksiyon-([0-9a-zA-Z-_]+)/$ koleksiyon.php?i=$1/ [L,QSA]
+
+ 
+
+# Arama Yönlendirmesi
+
+
+
+  RewriteRule  ^arama-?([0-9a-zA-Z-_]+)$ arama.php?i=$1 [L,QSA]
